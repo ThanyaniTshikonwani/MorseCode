@@ -1,46 +1,36 @@
 import java.util.Scanner;
 
 public class Main {
+
+
     public static void main(String[] args){
-        String answer;
-            do {
-                Scanner input = new Scanner(System.in);
-                System.out.println("Morse Code Encryption Program");
-                System.out.println("Press 1 To Convert letters to Morse Code");
-                System.out.println("Press 2 To Convert Morse Code to Letter");
-                int op = input.nextByte();
-                invoker(op);
+        String rerun;
 
-                System.out.println("To re-run please type 'Yes'or No to exit ");
-            answer=input.next();
-        } while (answer.equalsIgnoreCase("Yes"));// To re-run the Program.
+        do {
+            Scanner input = new Scanner(System.in);
+            Scanner input2 = new Scanner(System.in);
+            System.out.println("1. Letters to Morse");
+            System.out.println("2. Convert Morse to Letters");
+            int opt = input.nextInt();
+            switch (opt) {
+                case 1:
+                    System.out.println("Letters to morse");
+                    String letters = input2.nextLine();
+                    String morseText = MorseCode.lettersToMorseCode(letters);
+                    System.out.println(morseText);
+                    break;
+
+                case 2:
+                    System.out.println("convert MorseCode to letters/words");
+                    String morse = input2.nextLine();
+                    String textdecoded = MorseCode.morseCodeToLetters(morse);
+                    System.out.println(textdecoded);
+                    break;
+
+            }
+            System.out.println("Type 'Yes' to Run Again or 'No' to Exit  ");
+            rerun = input2.nextLine();
+
+        } while (rerun.equalsIgnoreCase("Yes")) ;
     }
-
-    // Method that gives the user an option to choose
-    public static void invoker(int op){
-        Scanner input2 = new Scanner(System.in);
-           switch (op){
-               case 1:
-
-                   System.out.println("Please enter a Text eg:(Hello World)");
-                   String letters = input2.nextLine();
-                   String result0 = MorseCode.lettersToMorseCode(letters);
-                   assert letters.length() == result0.split(" ").length: "pass";
-                   System.out.println(result0);
-                   break;
-
-               case 2:
-
-                   System.out.println("Please enter a Morse Code");
-                   String morse = input2.nextLine();
-                   String result = MorseCode.morseCodeToLetters(morse);
-                   assert morse.split(" ").length == result.length(): "pass";
-                   System.out.println(result);
-                   break;
-
-               default:
-                   System.out.println("Incorrect entry, Please run Again.");
-                   break;
-           }
-       }
-    }
+}
