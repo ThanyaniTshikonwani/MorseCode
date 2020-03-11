@@ -16,7 +16,7 @@ public class Main {
                 case 1:
                     System.out.println("Letters to morse");
                     String letters = input2.nextLine();
-                    String morseText = MorseCode.lettersToMorseCode(letters);
+                    String morseText = MorseCode.lettersToMorseCode(letters.toUpperCase());
                     System.out.println(morseText);
                     break;
 
